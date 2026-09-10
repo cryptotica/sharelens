@@ -6,7 +6,7 @@ import { routerAbi } from "../lib/slipstream";
 import { GET } from "../app/api/geo/route";
 import { assertGeo, readGeo, TRUSTED_GEO_SOURCE, type Geo } from "../lib/geo";
 import { STALE_SECONDS } from "../lib/oracle";
-import { assertMarket, assertQuote, minimumOutput, runSigningBoundary, tradeInput, tradingBoundary, type Quote, type SigningBoundary, type TradeContext } from "../lib/trade";
+import { assertMarket, assertQuote, BUILDER_DATA_SUFFIX, minimumOutput, runSigningBoundary, tradeInput, tradingBoundary, type Quote, type SigningBoundary, type TradeContext } from "../lib/trade";
 import { CHAIN_ID, TOKENS, USDC } from "../lib/tokens";
 import { createWallet, selectPreferredProvider, walletContext, type InjectedProvider, type WalletState } from "../lib/wallet";
 
@@ -221,20 +221,11 @@ test("production signing adapter rejects the actual local geo policy before any 
   } finally { globalThis.fetch = originalFetch; }
 });
 
-test("production builder lock independently rejects otherwise trusted geo before wallet activity", async () => {
-  const originalFetch = globalThis.fetch;
-  const provider = new MockProvider();
-  globalThis.fetch = async () => Response.json({ country: "TH", allowed: true, source: TRUSTED_GEO_SOURCE, checkedAt: Date.now(), reason: "" });
-  try {
-    for (const side of ["buy", "sell"] as const) {
-      const current = { ...context, side };
-      const liveQuote = { ...quote, context: current, amountIn: side === "buy" ? 1_000_000n : 100_000_000n, decimals: side === "buy" ? 8 : 6, createdAt: Date.now(), expiresAt: Date.now() + 60_000 };
-      for (const action of ["approve", "swap"] as const) {
-        await assert.rejects(runSigningBoundary(action, liveQuote, tradingBoundary(TOKENS[0], liveQuote, provider, () => current, () => {})), /Builder attribution is unconfigured/);
-      }
-    }
-    assert.equal(provider.calls.length, 0);
-  } finally { globalThis.fetch = originalFetch; }
+test("builder attribution is configured for production signing", async () => {
+  const { BUILDER_CODE, BUILDER_DATA_SUFFIX, BUILDER_BLOCKER } = await import("../lib/trade");
+  assert.equal(BUILDER_CODE, "bc_1q35h6kr");
+  assert.match(BUILDER_DATA_SUFFIX, /^0x[0-9a-f]+$/);
+  assert.equal(BUILDER_BLOCKER, "");
 });
 
 test("actual provider send boundary catches an account change during viem's asynchronous chain check", async () => {
@@ -266,6 +257,8 @@ test("isolated test-only adapter encodes exact allowance, exact input, recipient
   const liveTimeQuote = { ...quote, createdAt: Date.now(), expiresAt: Date.now() + 60_000 };
   const io = tradingBoundary(TOKENS[0], liveTimeQuote, provider, () => context, () => {});
   await io.send("approve"); await io.send("swap");
+  assert.equal(requests[0].data.endsWith(BUILDER_DATA_SUFFIX.slice(2)), true);
+  assert.equal(requests[1].data.endsWith(BUILDER_DATA_SUFFIX.slice(2)), true);
   const approval = decodeFunctionData({ abi: erc20Abi, data: requests[0].data });
   assert.equal(approval.functionName, "approve");
   assert.deepEqual(approval.args, [other, quote.amountIn]);

@@ -1,5 +1,6 @@
 import { createWalletClient, custom, erc20Abi, isAddressEqual, maxUint256, type Address, type EIP1193Provider, type Hash } from "viem";
 import { base } from "viem/chains";
+import { Attribution } from "ox/erc8021";
 import { b20Abi, parseAmount } from "./b20";
 import { client } from "./client";
 import { assertGeo, type Geo } from "./geo";
@@ -10,7 +11,9 @@ import { readExecutableQuote, routerAbi } from "./slipstream";
 import { CHAIN_ID, USDC, type Token } from "./tokens";
 import { walletContext, type InjectedProvider } from "./wallet";
 
-export const BUILDER_BLOCKER = "Builder attribution is unconfigured. Production execution is locked.";
+export const BUILDER_CODE = "bc_1q35h6kr";
+export const BUILDER_DATA_SUFFIX = Attribution.toDataSuffix({ codes: [BUILDER_CODE] });
+export const BUILDER_BLOCKER = "";
 export type TradeContext = { account: Address; chainId: number; revision: number; token: Address; amount: string; slippage: string; side: "buy" | "sell" };
 export type Quote = {
   context: TradeContext; amountIn: bigint; amountOut: bigint; minOut: bigint; scaled: bigint;
@@ -118,7 +121,7 @@ export async function runSigningBoundary(action: Action, quote: Quote, io: Signi
 
 export function tradingBoundary(asset: Token, quote: Quote, provider: InjectedProvider,
   current: () => TradeContext | null, status: SigningBoundary["status"]): SigningBoundary {
-  const wallet = createWalletClient({ chain: base, transport: custom({
+  const wallet = createWalletClient({ chain: base, dataSuffix: BUILDER_DATA_SUFFIX, transport: custom({
     async request(args: { method: string; params?: readonly unknown[] }) {
       // viem may await chain checks before sending. Check context again at the actual provider boundary.
       if (args.method === "eth_sendTransaction" || args.method === "wallet_sendTransaction") assertQuote(quote, current(), Date.now());
@@ -135,7 +138,6 @@ export function tradingBoundary(asset: Token, quote: Quote, provider: InjectedPr
     current, now: Date.now, status,
     async revalidate() {
       assertGeo(await fetchGeo(), Date.now());
-      if (BUILDER_BLOCKER) throw new Error(BUILDER_BLOCKER);
       const context = await walletContext(provider);
       if (!context.account || context.chainId !== CHAIN_ID || !isAddressEqual(context.account, quote.context.account)) throw new Error("Wallet changed.");
       const fresh = await requestQuote(asset, quote.context);
