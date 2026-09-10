@@ -4,7 +4,7 @@ import test from "node:test";
 import { decodeFunctionData, erc20Abi, maxUint256, type Address, type Hash, type Hex } from "viem";
 import { routerAbi } from "../lib/slipstream";
 import { GET } from "../app/api/geo/route";
-import { assertGeo, readGeo, type Geo } from "../lib/geo";
+import { assertGeo, readGeo, TRUSTED_GEO_SOURCE, type Geo } from "../lib/geo";
 import { STALE_SECONDS } from "../lib/oracle";
 import { assertMarket, assertQuote, minimumOutput, runSigningBoundary, tradeInput, tradingBoundary, type Quote, type SigningBoundary, type TradeContext } from "../lib/trade";
 import { CHAIN_ID, TOKENS, USDC } from "../lib/tokens";
@@ -89,11 +89,16 @@ test("geo fails closed locally; ignores arbitrary host, query, cookies and count
   const local = readGeo();
   assert.equal(local.country, null); assert.equal(local.allowed, false);
   const request = new Request("https://fake.vercel.app/api/geo?country=TH", { headers: { "x-vercel-ip-country": "TH", "x-vercel-id": "fake", "x-forwarded-for": "1.1.1.1", cookie: "country=TH" } });
-  const response = await (GET as (request?: Request) => Response)(request);
+  const response = await GET(request);
   assert.match(response.headers.get("cache-control")!, /no-store/);
   const body = await response.json();
   assert.equal(body.country, null); assert.equal(body.allowed, false);
-  const trusted: Geo = { country: "TH", allowed: true, source: "trusted-host", checkedAt: now, reason: "" };
+  const trustedRequest = new Request("https://sharelens.example/api/geo");
+  Object.defineProperty(trustedRequest, "cf", { value: { country: "TH" } });
+  const trustedResponse = await GET(trustedRequest);
+  const trustedBody = await trustedResponse.json();
+  assert.deepEqual({ country: trustedBody.country, allowed: trustedBody.allowed, source: trustedBody.source }, { country: "TH", allowed: true, source: TRUSTED_GEO_SOURCE });
+  const trusted: Geo = { country: "TH", allowed: true, source: TRUSTED_GEO_SOURCE, checkedAt: now, reason: "" };
   assert.doesNotThrow(() => assertGeo(trusted, now));
   for (const change of [{ country: "US" }, { country: null }, { allowed: false }, { source: "client-header" }, { checkedAt: now - 30_001 }, { checkedAt: now + 1 }, { checkedAt: NaN }]) {
     assert.throws(() => assertGeo({ ...trusted, ...change }, now));
@@ -198,12 +203,12 @@ test("hash is pending only; successful swap requires a successful receipt", asyn
 test("production signing adapter rejects the actual local geo policy before any wallet/RPC action", async () => {
   const originalFetch = globalThis.fetch;
   const provider = new MockProvider();
-  globalThis.fetch = async () => GET();
+  globalThis.fetch = async () => GET(new Request("https://sharelens.example/api/geo"));
   try {
     const liveTimeQuote = { ...quote, createdAt: Date.now(), expiresAt: Date.now() + 60_000 };
     for (const action of ["approve", "swap"] as const) {
       const io = tradingBoundary(TOKENS[0], liveTimeQuote, provider, () => context, () => {});
-      await assert.rejects(runSigningBoundary(action, liveTimeQuote, io), /no trusted host geo source/);
+      await assert.rejects(runSigningBoundary(action, liveTimeQuote, io), /no trusted Cloudflare geo context/);
     }
     assert.equal(provider.calls.length, 0);
   } finally { globalThis.fetch = originalFetch; }
@@ -212,7 +217,7 @@ test("production signing adapter rejects the actual local geo policy before any 
 test("production builder lock independently rejects otherwise trusted geo before wallet activity", async () => {
   const originalFetch = globalThis.fetch;
   const provider = new MockProvider();
-  globalThis.fetch = async () => Response.json({ country: "TH", allowed: true, source: "trusted-host", checkedAt: Date.now(), reason: "" });
+  globalThis.fetch = async () => Response.json({ country: "TH", allowed: true, source: TRUSTED_GEO_SOURCE, checkedAt: Date.now(), reason: "" });
   try {
     for (const side of ["buy", "sell"] as const) {
       const current = { ...context, side };
