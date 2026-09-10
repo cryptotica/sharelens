@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createWallet, emptyWallet, selectPreferredProvider, type AnnouncedProvider, type InjectedProvider } from "../lib/wallet";
+import { createWallet, emptyWallet, type AnnouncedProvider, type InjectedProvider } from "../lib/wallet";
 
 type EthereumWithProviders = InjectedProvider & { providers?: InjectedProvider[] };
 
@@ -24,26 +24,36 @@ async function discoverProviders(fallbacks: readonly InjectedProvider[]) {
 export function useWallet() {
   const [state, setState] = useState(emptyWallet);
   const [controller, setController] = useState<ReturnType<typeof createWallet> | null>(null);
+  const [providers, setProviders] = useState<AnnouncedProvider[]>([]);
+  const [chooserOpen, setChooserOpen] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => () => controller?.destroy(), [controller]);
-  async function connect() {
-    setError("");
-    let wallet = controller;
-    if (!wallet) {
-      const injected = (window as Window & { ethereum?: EthereumWithProviders }).ethereum;
-      const fallbacks = injected ? [injected, ...(injected.providers ?? [])] : [];
-      const options = await discoverProviders(fallbacks);
-      const provider = selectPreferredProvider(options);
-      if (!provider?.request || !provider.on || !provider.removeListener) {
-        setError("No injected wallet found. Open this page in an EIP-1193 wallet browser or enable your wallet extension.");
-        return;
-      }
-      wallet = createWallet(provider, setState);
-      setController(wallet);
+  function providerName(item: AnnouncedProvider, index: number) {
+    return typeof item.info?.name === "string" && item.info.name.trim() ? item.info.name : `Wallet ${index + 1}`;
+  }
+  function connectProvider(provider: InjectedProvider) {
+    if (!provider.request || !provider.on || !provider.removeListener) {
+      setError("This wallet provider is not compatible with EIP-1193.");
+      return;
     }
+    setChooserOpen(false);
+    setProviders([]);
+    const wallet = createWallet(provider, setState);
+    setController(wallet);
     void wallet.connect();
   }
-  return { state, controller, connect, error: state.error || error };
+  async function connect() {
+    setError("");
+    if (controller) return void controller.connect();
+    const injected = (window as Window & { ethereum?: EthereumWithProviders }).ethereum;
+    const fallbacks = injected ? [injected, ...(injected.providers ?? [])] : [];
+    const options = await discoverProviders(fallbacks);
+    if (!options.length) return setError("No injected wallet found. Open this page in a wallet browser or enable a wallet extension.");
+    if (options.length === 1) return connectProvider(options[0].provider);
+    setProviders(options);
+    setChooserOpen(true);
+  }
+  return { state, controller, connect, providers, chooserOpen, providerName, connectProvider, closeChooser: () => setChooserOpen(false), error: state.error || error };
 }
 
 export type Wallet = ReturnType<typeof useWallet>;
@@ -56,7 +66,14 @@ export function WalletControl({ wallet }: { wallet: Wallet }) {
       <span className="wallet-address" title={state.account}>{state.account.slice(0, 6)}...{state.account.slice(-4)}</span>
       {state.chainId !== 8453 && <button type="button" onClick={() => void controller?.switchBase()}>Switch to Base</button>}
       <button type="button" onClick={() => controller?.disconnect()}>Disconnect</button>
-    </> : <button className="primary" type="button" disabled={state.busy} onClick={() => void wallet.connect()}>{state.busy ? "Wallet pending..." : "Connect wallet"}</button>}
+    </> : <>
+      <button className="primary" type="button" disabled={state.busy} onClick={() => void wallet.connect()}>{state.busy ? "Wallet pending..." : "Connect wallet"}</button>
+      {wallet.chooserOpen && <div className="wallet-options" role="dialog" aria-label="Choose wallet">
+        <span>Choose wallet</span>
+        {wallet.providers.map((item, index) => <button key={`${wallet.providerName(item, index)}-${index}`} type="button" onClick={() => wallet.connectProvider(item.provider)}>Connect {wallet.providerName(item, index)}</button>)}
+        <button type="button" onClick={wallet.closeChooser}>Cancel</button>
+      </div>}
+    </>}
     {state.busy && <button type="button" onClick={() => controller?.disconnect()}>Cancel connection</button>}
     <span className="source">Disconnect clears this session, not wallet permissions.</span>
   </div>;
