@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { createWallet, emptyWallet, selectPreferredProvider, type AnnouncedProvider, type InjectedProvider } from "../lib/wallet";
 
-async function discoverProviders(fallback?: InjectedProvider) {
+type EthereumWithProviders = InjectedProvider & { providers?: InjectedProvider[] };
+
+async function discoverProviders(fallbacks: readonly InjectedProvider[]) {
   const announced: AnnouncedProvider[] = [];
   const onAnnounce = (event: Event) => {
     const detail = (event as CustomEvent<AnnouncedProvider>).detail;
@@ -13,7 +15,9 @@ async function discoverProviders(fallback?: InjectedProvider) {
   window.dispatchEvent(new Event("eip6963:requestProvider"));
   await new Promise(resolve => setTimeout(resolve, 250));
   window.removeEventListener("eip6963:announceProvider", onAnnounce);
-  if (fallback && !announced.some(item => item.provider === fallback)) announced.push({ info: { name: "Browser wallet" }, provider: fallback });
+  for (const fallback of fallbacks) {
+    if (fallback && !announced.some(item => item.provider === fallback)) announced.push({ info: { name: "Browser wallet" }, provider: fallback });
+  }
   return announced;
 }
 
@@ -26,7 +30,9 @@ export function useWallet() {
     setError("");
     let wallet = controller;
     if (!wallet) {
-      const options = await discoverProviders((window as Window & { ethereum?: InjectedProvider }).ethereum);
+      const injected = (window as Window & { ethereum?: EthereumWithProviders }).ethereum;
+      const fallbacks = injected ? [injected, ...(injected.providers ?? [])] : [];
+      const options = await discoverProviders(fallbacks);
       const provider = selectPreferredProvider(options);
       if (!provider?.request || !provider.on || !provider.removeListener) {
         setError("No injected wallet found. Open this page in an EIP-1193 wallet browser or enable your wallet extension.");
