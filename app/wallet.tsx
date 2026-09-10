@@ -1,18 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createWallet, emptyWallet, type InjectedProvider } from "../lib/wallet";
+import { createWallet, emptyWallet, selectPreferredProvider, type AnnouncedProvider, type InjectedProvider } from "../lib/wallet";
+
+async function discoverProvider(fallback?: InjectedProvider) {
+  const announced: AnnouncedProvider[] = [];
+  const onAnnounce = (event: Event) => {
+    const detail = (event as CustomEvent<AnnouncedProvider>).detail;
+    if (detail?.provider && typeof (detail.provider as { request?: unknown }).request === "function" && !announced.some(item => item.provider === detail.provider)) announced.push(detail);
+  };
+  window.addEventListener("eip6963:announceProvider", onAnnounce);
+  window.dispatchEvent(new Event("eip6963:requestProvider"));
+  await new Promise(resolve => setTimeout(resolve, 250));
+  window.removeEventListener("eip6963:announceProvider", onAnnounce);
+  return selectPreferredProvider(announced, fallback);
+}
 
 export function useWallet() {
   const [state, setState] = useState(emptyWallet);
   const [controller, setController] = useState<ReturnType<typeof createWallet> | null>(null);
   const [error, setError] = useState("");
   useEffect(() => () => controller?.destroy(), [controller]);
-  function connect() {
+  async function connect() {
     setError("");
     let wallet = controller;
     if (!wallet) {
-      const provider = (window as Window & { ethereum?: InjectedProvider }).ethereum;
+      const provider = await discoverProvider((window as Window & { ethereum?: InjectedProvider }).ethereum);
       if (!provider?.request || !provider.on || !provider.removeListener) {
         setError("No injected wallet found. Open this page in an EIP-1193 wallet browser or enable your wallet extension.");
         return;

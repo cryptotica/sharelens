@@ -8,7 +8,7 @@ import { assertGeo, readGeo, TRUSTED_GEO_SOURCE, type Geo } from "../lib/geo";
 import { STALE_SECONDS } from "../lib/oracle";
 import { assertMarket, assertQuote, minimumOutput, runSigningBoundary, tradeInput, tradingBoundary, type Quote, type SigningBoundary, type TradeContext } from "../lib/trade";
 import { CHAIN_ID, TOKENS, USDC } from "../lib/tokens";
-import { createWallet, walletContext, type InjectedProvider, type WalletState } from "../lib/wallet";
+import { createWallet, selectPreferredProvider, walletContext, type InjectedProvider, type WalletState } from "../lib/wallet";
 
 const account: Address = "0x1111111111111111111111111111111111111111";
 const other: Address = "0x2222222222222222222222222222222222222222";
@@ -35,6 +35,13 @@ class MockProvider extends EventEmitter implements InjectedProvider {
   }
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
+
+test("wallet provider selection prefers Coinbase Wallet among EIP-6963 announcements", () => {
+  const first = new MockProvider();
+  const coinbase = new MockProvider();
+  assert.equal(selectPreferredProvider([{ info: { name: "MetaMask", rdns: "io.metamask" }, provider: first }, { info: { name: "Coinbase Wallet", rdns: "com.coinbase.wallet" }, provider: coinbase }]), coinbase);
+  assert.equal(selectPreferredProvider([], first), first);
+});
 
 test("wallet requests consent, tracks accounts/chain, disconnects locally and cleans listeners", async () => {
   const provider = new MockProvider();

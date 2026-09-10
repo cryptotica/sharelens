@@ -6,8 +6,14 @@ export type InjectedProvider = {
   on(event: string, listener: (...args: unknown[]) => void): void;
   removeListener(event: string, listener: (...args: unknown[]) => void): void;
 };
+export type AnnouncedProvider = { info?: { name?: unknown; rdns?: unknown }; provider: InjectedProvider };
 export type WalletState = { account: Address | null; chainId: number | null; revision: number; busy: boolean; error: string };
 export const emptyWallet: WalletState = { account: null, chainId: null, revision: 0, busy: false, error: "" };
+
+export function selectPreferredProvider(announced: readonly AnnouncedProvider[], fallback?: InjectedProvider) {
+  const coinbase = announced.find(({ info }) => info?.rdns === "com.coinbase.wallet" || (typeof info?.name === "string" && /coinbase wallet/i.test(info.name)));
+  return coinbase?.provider ?? announced[0]?.provider ?? fallback ?? null;
+}
 
 export function walletError(error: unknown) {
   if (error && typeof error === "object" && "code" in error && error.code === 4001) return "Wallet request rejected. Nothing was confirmed.";
