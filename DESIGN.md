@@ -104,7 +104,7 @@
         "reason": "This is a local contract and verification workflow, not a model generation run."
       }
     },
-    "human_verdict": "pending"
+    "human_verdict": "approved"
   },
   "accessibility_targets": [
     "44px minimum interactive controls",

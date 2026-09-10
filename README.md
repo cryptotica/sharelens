@@ -20,3 +20,6 @@ A Base Builder Quest prototype: **Dividend Lens + Premium Guard** for Coinbase T
 
 ## Important
 The source spec contained a wrong USDC address. Use the corrected address documented in `BRAIN.md` and the research record, not the source value.
+
+## Deployment
+Cloudflare preparation and the adapter/safety pre-deploy gate are documented in `CLOUDFLARE_DEPLOY.md`. This app is not a plain static Pages export because `/api/geo` is a server-side safety boundary.
