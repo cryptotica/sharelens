@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createWallet, emptyWallet, type AnnouncedProvider, type InjectedProvider } from "../lib/wallet";
 
 type EthereumWithProviders = InjectedProvider & { providers?: InjectedProvider[] };
-type WalletChoice = { name: string; provider?: InjectedProvider; walletConnect?: boolean };
+
 
 function isPhantom(provider: unknown, info?: AnnouncedProvider["info"]) {
   const value = provider as { isPhantom?: unknown } | undefined;
@@ -33,12 +33,12 @@ async function discoverProviders(fallbacks: readonly InjectedProvider[]) {
 export function useWallet() {
   const [state, setState] = useState(emptyWallet);
   const [controller, setController] = useState<ReturnType<typeof createWallet> | null>(null);
-  const [providers, setProviders] = useState<WalletChoice[]>([]);
+  const [providers, setProviders] = useState<AnnouncedProvider[]>([]);
   const [chooserOpen, setChooserOpen] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => () => controller?.destroy(), [controller]);
-  function providerName(item: WalletChoice, index: number) {
-    return item.name || `Wallet ${index + 1}`;
+  function providerName(item: AnnouncedProvider, index: number) {
+    return typeof item.info?.name === "string" && item.info.name.trim() ? item.info.name : `Wallet ${index + 1}`;
   }
   function connectProvider(provider: InjectedProvider) {
     if (!provider.request || !provider.on || !provider.removeListener) {
@@ -51,32 +51,17 @@ export function useWallet() {
     setController(wallet);
     void wallet.connect();
   }
-  async function connectWalletConnect() {
-    const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID;
-    if (!projectId) return setError("WalletConnect needs NEXT_PUBLIC_WC_PROJECT_ID. Add a Reown project ID to the Worker environment.");
-    try {
-      const { EthereumProvider } = await import("@walletconnect/ethereum-provider");
-      const provider = await EthereumProvider.init({
-        projectId,
-        chains: [8453],
-        showQrModal: true,
-        metadata: { name: "ShareLens", description: "ShareLens wallet connection", url: window.location.origin, icons: [`${window.location.origin}/icon.png`] },
-      });
-      connectProvider(provider as unknown as InjectedProvider);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "WalletConnect failed to initialize.");
-    }
-  }
+
   async function connect() {
     setError("");
     if (controller) return void controller.connect();
     const injected = (window as Window & { ethereum?: EthereumWithProviders }).ethereum;
     const fallbacks = injected ? [injected, ...(injected.providers ?? [])] : [];
     const options = await discoverProviders(fallbacks);
-    setProviders([...options.map((item) => ({ name: typeof item.info?.name === "string" && item.info.name.trim() ? item.info.name : "Browser wallet", provider: item.provider })), { name: "WalletConnect (QR)", walletConnect: true }]);
+    setProviders(options);
     setChooserOpen(true);
   }
-  return { state, controller, connect, providers, chooserOpen, providerName, connectProvider, connectWalletConnect, closeChooser: () => setChooserOpen(false), error: state.error || error };
+  return { state, controller, connect, providers, chooserOpen, providerName, connectProvider, closeChooser: () => setChooserOpen(false), error: state.error || error };
 }
 
 export type Wallet = ReturnType<typeof useWallet>;
@@ -93,7 +78,7 @@ export function WalletControl({ wallet }: { wallet: Wallet }) {
       <button className="primary" type="button" disabled={state.busy} onClick={() => void wallet.connect()}>{state.busy ? "Wallet pending..." : "Connect wallet"}</button>
       {wallet.chooserOpen && <div className="wallet-options" role="dialog" aria-label="Choose wallet">
         <span>Choose wallet</span>
-        {wallet.providers.map((item, index) => <button key={`${wallet.providerName(item, index)}-${index}`} type="button" onClick={() => item.walletConnect ? void wallet.connectWalletConnect() : item.provider && wallet.connectProvider(item.provider)}>Connect {wallet.providerName(item, index)}</button>)}
+        {wallet.providers.map((item, index) => <button key={`${wallet.providerName(item, index)}-${index}`} type="button" onClick={() => wallet.connectProvider(item.provider)}>Connect {wallet.providerName(item, index)}</button>)}
         <button type="button" onClick={wallet.closeChooser}>Cancel</button>
       </div>}
     </>}
