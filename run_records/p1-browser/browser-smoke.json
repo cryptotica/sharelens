@@ -1,0 +1,100 @@
+[
+  {
+    "width": 1440,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "controls": [
+      {
+        "text": "Connect wallet",
+        "disabled": false
+      },
+      {
+        "text": "01\nNVDAc\nNVIDIA\n>",
+        "disabled": false
+      },
+      {
+        "text": "02\nAAPLc\nApple\n+",
+        "disabled": false
+      },
+      {
+        "text": "03\nMETAc\nMeta\n+",
+        "disabled": false
+      },
+      {
+        "text": "04\nGOOGLc\nAlphabet\n+",
+        "disabled": false
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      },
+      {
+        "text": "Copy token address",
+        "disabled": false
+      },
+      {
+        "text": "Get read-only quote",
+        "disabled": true
+      },
+      {
+        "text": "1. Approve exact USDC",
+        "disabled": true
+      },
+      {
+        "text": "2. Swap to NVDAc",
+        "disabled": true
+      }
+    ],
+    "text": "SHARELENS / EQUITY INSTRUMENTS\n[ B20 ]\n\nA CLEARER VIEW BEFORE YOU BUY\n\nShareLens.\n\nUnderstand your shares. Check the premium.\n\nBASE / 8453\nConnect wallet\nDisconnect clears this session, not wallet permissions.\nNON-US ONLY\nThese assets are available only to eligible non-US users. This app does not verify eligibility. Not investment advice. Not endorsed by Base or Coinbase.\nSELECT INSTRUMENT\n04 ASSETS / ADDRESS VERIFIED ON READ\n01\nNVDAc\nNVIDIA\n>\n02\nAAPLc\nApple\n+\n03\nMETAc\nMeta\n+\n04\nGOOGLc\nAlphabet\n+\nBase block 51026046 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\n1.0000\n\nEquivalent NVIDIA shares\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\n1 B20 token does not always equal 1 share. Cash dividends are reinvested into shares and folded into the multiplier; your token balance does not change and no USDC dividend arrives in your wallet.\n\nYour holdings / Base\n\nConnect a wallet to inspect your actual holdings.\n\n0xb20000000000000000000078ee7ce2fE4908108C / Basescan\nCopy token address\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$232.07\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/8/2026, 7:29:35 AM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$232.95\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nSlight premium. Watch slippage.\n\n+0.38%\n\n$0.88 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGreen: < 0.30% | Yellow: 0.30% to 1.00% inclusive | Red: > 1.00%. Status uses exact values before rounding. Negative values mean a discount.\n\nGray when paused or older than 36 hours. Feeds operate 24/5 and may stop during market closures, holidays or corporate actions. Spot prices are not executable quotes and exclude slippage.\n\n03 / MANUAL EXECUTION\n\nBuy Station\nEXECUTION LOCKED\nYou pay / USDC\n\nBase USDC balance: Connect wallet\n\nSlippage tolerance / %\n\nEnter a non-negative amount with at most 6 decimal places.\n\nYou receive / NVDAc\n\nNot quoted\n\nNo spot estimate substituted.\n\nMinimum received\n--\n\nAerodrome Slipstream exact-input simulation\n\nNetwork gas is extra, paid in ETH. Builder attribution is not configured; no attribution is claimed. Execution is disabled on this host.\n\nGet read-only quote\n1. Approve exact USDC\n2. Swap to NVDAc\n\nYou review and sign each step. No unlimited approval. Every signing boundary rechecks all gates, including after approval.\n\nSAFETY INTERLOCK\nCountry unknown: no trusted host geo source is configured. Trading is unavailable on this host.\nConnect a wallet to read balances and request a quote.\n\nGeo is a coarse risk signal, not KYC or proof of eligibility. No self-certified country bypass.\n\nNo quote requested. Enter USDC to inspect the real pool quote.\n\nVerify addresses, not tickers. Public Base RPC data. Wallet connection does not grant spending permission. Trading is unavailable without trusted geo provenance.\n\nNVDAc\n0xb20000000000000000000078ee7ce2fE4908108C\nChainlink feed on Basescan\nAAPLc\n0xb200000000000000000000C2e324d24d7eEcd1fb\nChainlink feed on Basescan\nMETAc\n0xb2000000000000000000008bC8786B856E61707C\nChainlink feed on Basescan\nGOOGLc\n0xb2000000000000000000002D0BA3164cc74f58B7\nChainlink feed on Basescan"
+  },
+  {
+    "width": 390,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "controls": [
+      {
+        "text": "Connect wallet",
+        "disabled": false
+      },
+      {
+        "text": "NVDAc\nNVIDIA\n>",
+        "disabled": false
+      },
+      {
+        "text": "AAPLc\nApple\n+",
+        "disabled": false
+      },
+      {
+        "text": "METAc\nMeta\n+",
+        "disabled": false
+      },
+      {
+        "text": "GOOGLc\nAlphabet\n+",
+        "disabled": false
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      },
+      {
+        "text": "Copy token address",
+        "disabled": false
+      },
+      {
+        "text": "Get read-only quote",
+        "disabled": true
+      },
+      {
+        "text": "1. Approve exact USDC",
+        "disabled": true
+      },
+      {
+        "text": "2. Swap to NVDAc",
+        "disabled": true
+      }
+    ],
+    "text": "SHARELENS / EQUITY INSTRUMENTS\n[ B20 ]\n\nA CLEARER VIEW BEFORE YOU BUY\n\nShareLens.\n\nUnderstand your shares. Check the premium.\n\nBASE / 8453\nConnect wallet\nDisconnect clears this session, not wallet permissions.\nNON-US ONLY\nThese assets are available only to eligible non-US users. This app does not verify eligibility. Not investment advice. Not endorsed by Base or Coinbase.\nSELECT INSTRUMENT\nNVDAc\nNVIDIA\n>\nAAPLc\nApple\n+\nMETAc\nMeta\n+\nGOOGLc\nAlphabet\n+\nBase block 51026048 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\n1.0000\n\nEquivalent NVIDIA shares\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\n1 B20 token does not always equal 1 share. Cash dividends are reinvested into shares and folded into the multiplier; your token balance does not change and no USDC dividend arrives in your wallet.\n\nYour holdings / Base\n\nConnect a wallet to inspect your actual holdings.\n\n0xb20000000000000000000078ee7ce2fE4908108C / Basescan\nCopy token address\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$232.07\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/8/2026, 7:29:35 AM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$232.95\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nSlight premium. Watch slippage.\n\n+0.38%\n\n$0.88 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGreen: < 0.30% | Yellow: 0.30% to 1.00% inclusive | Red: > 1.00%. Status uses exact values before rounding. Negative values mean a discount.\n\nGray when paused or older than 36 hours. Feeds operate 24/5 and may stop during market closures, holidays or corporate actions. Spot prices are not executable quotes and exclude slippage.\n\n03 / MANUAL EXECUTION\n\nBuy Station\nEXECUTION LOCKED\nYou pay / USDC\n\nBase USDC balance: Connect wallet\n\nSlippage tolerance / %\n\nEnter a non-negative amount with at most 6 decimal places.\n\nYou receive / NVDAc\n\nNot quoted\n\nNo spot estimate substituted.\n\nMinimum received\n--\n\nAerodrome Slipstream exact-input simulation\n\nNetwork gas is extra, paid in ETH. Builder attribution is not configured; no attribution is claimed. Execution is disabled on this host.\n\nGet read-only quote\n1. Approve exact USDC\n2. Swap to NVDAc\n\nYou review and sign each step. No unlimited approval. Every signing boundary rechecks all gates, including after approval.\n\nSAFETY INTERLOCK\nCountry unknown: no trusted host geo source is configured. Trading is unavailable on this host.\nConnect a wallet to read balances and request a quote.\n\nGeo is a coarse risk signal, not KYC or proof of eligibility. No self-certified country bypass.\n\nNo quote requested. Enter USDC to inspect the real pool quote.\n\nVerify addresses, not tickers. Public Base RPC data. Wallet connection does not grant spending permission. Trading is unavailable without trusted geo provenance.\n\nNVDAc\n0xb20000000000000000000078ee7ce2fE4908108C\nChainlink feed on Basescan\nAAPLc\n0xb200000000000000000000C2e324d24d7eEcd1fb\nChainlink feed on Basescan\nMETAc\n0xb2000000000000000000008bC8786B856E61707C\nChainlink feed on Basescan\nGOOGLc\n0xb2000000000000000000002D0BA3164cc74f58B7\nChainlink feed on Basescan"
+  }
+]

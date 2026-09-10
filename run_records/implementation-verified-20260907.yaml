@@ -1,0 +1,62 @@
+status: verified
+project: sharelens
+workflow: p0-read-only-implementation
+changed_paths:
+  - control_room/projects/product_experiments/sharelens/app/
+  - control_room/projects/product_experiments/sharelens/lib/
+  - control_room/projects/product_experiments/sharelens/tests/math.test.ts
+  - control_room/projects/product_experiments/sharelens/scripts/check-live.ts
+  - control_room/projects/product_experiments/sharelens/package.json
+  - control_room/projects/product_experiments/sharelens/package-lock.json
+  - control_room/projects/product_experiments/sharelens/contracts/handoff.yaml
+  - control_room/projects/product_experiments/sharelens/BRAIN.md
+commands:
+  - npm install --no-audit --no-fund
+  - npm test
+  - npm run build
+  - npm run check:live
+  - local preview at http://127.0.0.1:3000/
+exit_codes: [0, 0, 0, 0, 0]
+artifacts:
+  - control_room/projects/product_experiments/sharelens/app/page.tsx
+  - control_room/projects/product_experiments/sharelens/app/layout.tsx
+  - control_room/projects/product_experiments/sharelens/app/globals.css
+  - control_room/projects/product_experiments/sharelens/lib/tokens.ts
+  - control_room/projects/product_experiments/sharelens/lib/b20.ts
+  - control_room/projects/product_experiments/sharelens/lib/oracle.ts
+  - control_room/projects/product_experiments/sharelens/lib/pool.ts
+  - control_room/projects/product_experiments/sharelens/lib/premium.ts
+  - control_room/projects/product_experiments/sharelens/tests/math.test.ts
+acceptance_results:
+  - criterion: four assets selectable by address
+    result: pass
+  - criterion: live B20 multiplier and helper conversion
+    result: pass; all four live multipliers were 1e18 and 1.00 token converted to 1 share in smoke
+  - criterion: Chainlink total-return reference and updatedAt
+    result: pass
+  - criterion: stale/pause fail-closed state
+    result: pass; all four current feeds reported stale under 36-hour rule
+  - criterion: Aerodrome USDC pool and metadata
+    result: pass; all four pools returned onchain token order, fee 500, tickSpacing 10
+  - criterion: exact premium threshold unit tests
+    result: pass; 4 tests passed
+  - criterion: loading/error/no-pool UI states
+    result: pass; implemented and preview smoke rendered loading then live data
+  - criterion: Basescan links and non-US disclaimer
+    result: pass
+  - criterion: mobile-readable single screen
+    result: pass by responsive CSS and local preview smoke
+  - criterion: wallet/swap/deployment
+    result: not_run; intentionally deferred P1
+  - criterion: public deployment/publish
+    result: not_run; human approval required
+evidence:
+  - https://docs.base.org/specifications/b20/tokenized-stocks-on-base
+  - https://www.base.org/stocks
+  - https://x.com/buildonbase/status/2095105184120664122
+  - https://api.dexscreener.com/latest/dex/tokens/0xb20000000000000000000078ee7ce2fE4908108C
+  - https://api.dexscreener.com/latest/dex/tokens/0xb200000000000000000000C2e324d24d7eEcd1fb
+  - https://api.dexscreener.com/latest/dex/tokens/0xb2000000000000000000008bC8786B856E61707C
+  - https://api.dexscreener.com/latest/dex/tokens/0xb2000000000000000000002D0BA3164cc74f58B7
+recovery: Initial Forge run lacked app/; second run created UI. Initial build failed on missing app, then TypeScript message-map fix and sequential RPC reads resolved build/live issues.
+next_action: Human visual review; do not deploy or add P1 transaction flow until approved.

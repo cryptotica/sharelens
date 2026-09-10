@@ -1,0 +1,22 @@
+project_id: sharelens
+name: ShareLens — Premium Guard + Dividend Lens
+parent_project: product_experiments
+status: prepared
+owner: pmaew
+runtime: nextjs_app_router
+worker_roles:
+  - atlas
+  - forge
+source_policy: copy_only
+source_spec: control_room/projects/product_experiments/sharelens/specs/sharelens-build-spec.md
+public_output: web app / Vercel
+pipeline:
+  - discover official B20 and pool data
+  - build P0 vertical slice
+  - verify live read-only data
+  - optional P1 swap path
+verification:
+  build: npm run build
+  tests: npm test
+publication_gate: human_review
+secrets_policy: no_secrets

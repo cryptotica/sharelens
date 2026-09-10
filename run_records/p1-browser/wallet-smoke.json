@@ -1,0 +1,38 @@
+{
+  "provider": "test-only double; not a real wallet connection",
+  "real_public_reads": true,
+  "checks": [
+    "no-wallet error",
+    "connect",
+    "wrong chain",
+    "switch Base",
+    "balance read",
+    "real quote",
+    "geo-locked signing",
+    "input invalidates quote",
+    "account event",
+    "disconnect",
+    "asset switch",
+    "spoofed geo denied"
+  ],
+  "wallet_calls": [
+    "eth_requestAccounts",
+    "eth_accounts",
+    "eth_chainId",
+    "wallet_switchEthereumChain",
+    "eth_accounts",
+    "eth_chainId",
+    "eth_accounts",
+    "eth_chainId",
+    "eth_accounts",
+    "eth_chainId"
+  ],
+  "page_errors": [],
+  "geo": {
+    "country": null,
+    "allowed": false,
+    "source": "unconfigured",
+    "checkedAt": 1788841456743,
+    "reason": "Country unknown: no trusted host geo source is configured. Trading is unavailable on this host."
+  }
+}

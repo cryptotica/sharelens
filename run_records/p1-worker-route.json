@@ -1,0 +1,11 @@
+{
+  "worker": "Forge via OpenCode",
+  "session_id": "ses_f80dce2a9ffeaDb2c1bo5pxdCv",
+  "opencode_version": "1.18.29",
+  "requested_model": "openai/gpt-6-astra",
+  "observed_assistant_routes": ["openai/gpt-6-astra"],
+  "authentication_route": "OpenAI OAuth",
+  "worktree": "D:/Builder_System/worktrees/sharelens-p1",
+  "status": "completed_exit_0",
+  "verification": "opencode models openai; opencode auth list; opencode export session metadata and assistant providerID/modelID"
+}

@@ -1,0 +1,623 @@
+[
+  {
+    "width": 1440,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "geometry": {
+      "stock": {
+        "x": 189,
+        "y": 308.5,
+        "right": 500.953125,
+        "bottom": 1603.515625
+      },
+      "station": {
+        "x": 883.96875,
+        "y": 308.5,
+        "right": 1251,
+        "bottom": 1603.515625
+      },
+      "cards": {
+        "x": 189,
+        "y": 1665.515625,
+        "right": 1251,
+        "bottom": 2160.453125
+      },
+      "targets": [
+        {
+          "text": "Connect wallet",
+          "height": 44
+        },
+        {
+          "text": "NNVDAcNVIDIA>",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify NVDAc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb20000000000000000000078ee7ce2fE4908108C",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x04689a41629776563E6822F76f2e57D148d28513",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0x853F5f1B92b16714Fe6CDA67CAad0856B83C7ab9",
+          "height": 80.78125
+        },
+        {
+          "text": "AAAPLcApple02",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify AAPLc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb200000000000000000000C2e324d24d7eEcd1fb",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x787f13dEa48Db0897CbCDD985de77809D837F988",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0xA3b1E3f9747065e2073722Ff4c9027d3eA4994F0",
+          "height": 80.78125
+        },
+        {
+          "text": "MMETAcMeta03",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify METAc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb2000000000000000000008bC8786B856E61707C",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x6526aE6797A76123638b863AeE4dD27Ba4E4b27D",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0xEAF57753BC382E0324a1D43F72E7027705a2273E",
+          "height": 80.78125
+        },
+        {
+          "text": "GGOOGLcAlphabet04",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify GOOGLc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb2000000000000000000002D0BA3164cc74f58B7",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x5bF49E0ffA937CE2FfF033c739aD7C634c4D34F2",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0xB1987CAD1682841b4b641d50E520777eC5Ab5542",
+          "height": 80.78125
+        },
+        {
+          "text": "BUY",
+          "height": 44
+        },
+        {
+          "text": "SELL",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "BUYGUARD: OK",
+          "height": 46
+        },
+        {
+          "text": "1. Approve exact USDC",
+          "height": 44
+        },
+        {
+          "text": "2. Swap to NVDAc",
+          "height": 44
+        },
+        {
+          "text": "Refresh data",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "Lens / how shares work",
+          "height": 44
+        },
+        {
+          "text": "Chainlink feed",
+          "height": 44
+        },
+        {
+          "text": "Registry pause",
+          "height": 44
+        },
+        {
+          "text": "Aerodrome Slipstream / USDC pool",
+          "height": 44
+        },
+        {
+          "text": "Guard / thresholds & methodology",
+          "height": 44
+        }
+      ]
+    },
+    "controls": [
+      {
+        "text": "Connect wallet",
+        "disabled": false
+      },
+      {
+        "text": "N\nNVDAc\nNVIDIA\n>",
+        "disabled": false
+      },
+      {
+        "text": "A\nAAPLc\nApple\n02",
+        "disabled": false
+      },
+      {
+        "text": "M\nMETAc\nMeta\n03",
+        "disabled": false
+      },
+      {
+        "text": "G\nGOOGLc\nAlphabet\n04",
+        "disabled": false
+      },
+      {
+        "text": "BUY\nGUARD: OK",
+        "disabled": true
+      },
+      {
+        "text": "1. Approve exact USDC",
+        "disabled": true
+      },
+      {
+        "text": "2. Swap to NVDAc",
+        "disabled": true
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      }
+    ],
+    "text": "SHARELENS / EQUITY SHOP CONSOLE\n_   [ B20 ]\n\nA CLEARER VIEW BEFORE YOU BUY\n\nShareLens.\n\nUnderstand your shares. Check the premium.\n\nEQUITY COUNTER\n04 INSTRUMENTS / BASE\nNON-US ONLY\nThese assets are available only to eligible non-US users. This app does not verify eligibility. Not investment advice. Not endorsed by Base or Coinbase.\nPLAYER / GUEST\nUSDC / --\nINVENTORY / NVDAc\nBASE / 8453\nConnect wallet\nDisconnect clears this session, not wallet permissions.\nSTOCK LIST\n04 / BASE\nLOT / INSTRUMENT\nSELECT\nN\nNVDAc\nNVIDIA\n>\nVerify NVDAc\nA\nAAPLc\nApple\n02\nVerify AAPLc\nM\nMETAc\nMeta\n03\nVerify METAc\nG\nGOOGLc\nAlphabet\n04\nVerify GOOGLc\n\nSelect an instrument to inspect, quote or trade. Verify addresses, not tickers.\n\nINSTRUMENT VIEW\nB20 / BASE\nNVDAc\n\nSELECTED INSTRUMENT / TOKENIZED EQUITY\n\nNVIDIA\nPool / token\n$224.33\nReference / TR\n$224.69\nPremium\n-0.16%\nFeed state\nfresh\n\nNear or below reference\n\nLive observations, not an executable quote. Inspect sources and freshness in the HUD below.\n\nMANUAL ONLY\nNO AUTO-SWAP\n\nB20 / NVIDIA\n\nBuy / Sell Station\nNVDAc / BASE 8453 / EXACT INPUT\nEXECUTION LOCKED\nBUY\nSELL\nYou pay / USDC\n\nBase USDC balance: Connect wallet\n\nSlippage tolerance / %\n\nEnter a non-negative amount with at most 6 decimal places.\n\nYou receive / NVDAc\n\nNot quoted\n\nNo spot estimate substituted.\n\nMinimum received\n--\n\nAerodrome Slipstream exact-input simulation\n\nNetwork gas is extra, paid in ETH. Builder attribution is not configured; no attribution is claimed. Execution is disabled on this host.\n\nBUY\nGUARD: OK\n1. Approve exact USDC\n2. Swap to NVDAc\n\nYou review and sign each step. No unlimited approval. Every signing boundary rechecks all gates, including after approval.\n\nSAFETY INTERLOCK\nCountry unknown: no trusted host geo source is configured. Trading is unavailable on this host.\nBuilder attribution is unconfigured. Production execution is locked.\nConnect a wallet to read balances and request a quote.\n\nGeo is a coarse risk signal, not KYC or proof of eligibility. No self-certified country bypass.\n\nOrder changed. Request a new quote; previous approvals are not revoked.\n\nBase block 51090150 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\n1.0000\n\nEquivalent NVIDIA shares\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\nYour holdings / Base\n\nConnect a wallet to inspect your actual holdings.\n\nLens / how shares work\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$224.69\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/9/2026, 8:50:17 PM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$224.33\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nNear or below reference\n\n-0.16%\n\n-$0.36 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGuard / thresholds & methodology\n\nVerify addresses, not tickers. Public Base RPC data. Wallet connection does not grant spending permission. Trading is unavailable without trusted geo provenance."
+  },
+  {
+    "width": 390,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "geometry": {
+      "stock": {
+        "x": 13,
+        "y": 277.5,
+        "right": 377,
+        "bottom": 810.25
+      },
+      "station": {
+        "x": 13,
+        "y": 1283.5,
+        "right": 377,
+        "bottom": 2605.34375
+      },
+      "cards": {
+        "x": 13,
+        "y": 2669.34375,
+        "right": 377,
+        "bottom": 3816.203125
+      },
+      "targets": [
+        {
+          "text": "Connect wallet",
+          "height": 44
+        },
+        {
+          "text": "NNVDAcNVIDIA>",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify NVDAc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb20000000000000000000078ee7ce2fE4908108C",
+          "height": 59.1875
+        },
+        {
+          "text": "Chainlink / 0x04689a41629776563E6822F76f2e57D148d28513",
+          "height": 59.1875
+        },
+        {
+          "text": "Aerodrome pool / 0x853F5f1B92b16714Fe6CDA67CAad0856B83C7ab9",
+          "height": 59.1875
+        },
+        {
+          "text": "AAAPLcApple02",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify AAPLc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb200000000000000000000C2e324d24d7eEcd1fb",
+          "height": 59.1875
+        },
+        {
+          "text": "Chainlink / 0x787f13dEa48Db0897CbCDD985de77809D837F988",
+          "height": 59.1875
+        },
+        {
+          "text": "Aerodrome pool / 0xA3b1E3f9747065e2073722Ff4c9027d3eA4994F0",
+          "height": 59.1875
+        },
+        {
+          "text": "MMETAcMeta03",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify METAc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb2000000000000000000008bC8786B856E61707C",
+          "height": 59.1875
+        },
+        {
+          "text": "Chainlink / 0x6526aE6797A76123638b863AeE4dD27Ba4E4b27D",
+          "height": 59.1875
+        },
+        {
+          "text": "Aerodrome pool / 0xEAF57753BC382E0324a1D43F72E7027705a2273E",
+          "height": 59.1875
+        },
+        {
+          "text": "GGOOGLcAlphabet04",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify GOOGLc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb2000000000000000000002D0BA3164cc74f58B7",
+          "height": 59.1875
+        },
+        {
+          "text": "Chainlink / 0x5bF49E0ffA937CE2FfF033c739aD7C634c4D34F2",
+          "height": 59.1875
+        },
+        {
+          "text": "Aerodrome pool / 0xB1987CAD1682841b4b641d50E520777eC5Ab5542",
+          "height": 59.1875
+        },
+        {
+          "text": "BUY",
+          "height": 44
+        },
+        {
+          "text": "SELL",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "BUYGUARD: OK",
+          "height": 46
+        },
+        {
+          "text": "1. Approve exact USDC",
+          "height": 44
+        },
+        {
+          "text": "2. Swap to NVDAc",
+          "height": 44
+        },
+        {
+          "text": "Refresh data",
+          "height": 46
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "Lens / how shares work",
+          "height": 44
+        },
+        {
+          "text": "Chainlink feed",
+          "height": 44
+        },
+        {
+          "text": "Registry pause",
+          "height": 44
+        },
+        {
+          "text": "Aerodrome Slipstream / USDC pool",
+          "height": 44
+        },
+        {
+          "text": "Guard / thresholds & methodology",
+          "height": 44
+        }
+      ]
+    },
+    "controls": [
+      {
+        "text": "Connect wallet",
+        "disabled": false
+      },
+      {
+        "text": "N\nNVDAc\nNVIDIA\n>",
+        "disabled": false
+      },
+      {
+        "text": "A\nAAPLc\nApple\n02",
+        "disabled": false
+      },
+      {
+        "text": "M\nMETAc\nMeta\n03",
+        "disabled": false
+      },
+      {
+        "text": "G\nGOOGLc\nAlphabet\n04",
+        "disabled": false
+      },
+      {
+        "text": "BUY\nGUARD: OK",
+        "disabled": true
+      },
+      {
+        "text": "1. Approve exact USDC",
+        "disabled": true
+      },
+      {
+        "text": "2. Swap to NVDAc",
+        "disabled": true
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      }
+    ],
+    "text": "SHARELENS / EQUITY SHOP CONSOLE\n_   [ B20 ]\n\nA CLEARER VIEW BEFORE YOU BUY\n\nShareLens.\n\nUnderstand your shares. Check the premium.\n\nEQUITY COUNTER\n04 INSTRUMENTS / BASE\nNON-US ONLYThese assets are available only to eligible non-US users. This app does not verify eligibility. Not investment advice. Not endorsed by Base or Coinbase.\nPLAYER / GUEST\nUSDC / --\nINVENTORY / NVDAc\nBASE / 8453\nConnect wallet\nDisconnect clears this session, not wallet permissions.\nSTOCK LIST\nLOT / INSTRUMENT\nSELECT\nN\nNVDAc\nNVIDIA\n>\nVerify NVDAc\nA\nAAPLc\nApple\n02\nVerify AAPLc\nM\nMETAc\nMeta\n03\nVerify METAc\nG\nGOOGLc\nAlphabet\n04\nVerify GOOGLc\n\nSelect an instrument to inspect, quote or trade. Verify addresses, not tickers.\n\nINSTRUMENT VIEW\nB20 / BASE\nNVDAc\n\nSELECTED INSTRUMENT / TOKENIZED EQUITY\n\nNVIDIA\nPool / token\n$224.33\nReference / TR\n$224.69\nPremium\n-0.16%\nFeed state\nfresh\n\nNear or below reference\n\nLive observations, not an executable quote. Inspect sources and freshness in the HUD below.\n\nMANUAL ONLY\nNO AUTO-SWAP\n\nB20 / NVIDIA\n\nBuy / Sell Station\nNVDAc / BASE 8453 / EXACT INPUT\nEXECUTION LOCKED\nBUY\nSELL\nYou pay / USDC\n\nBase USDC balance: Connect wallet\n\nSlippage tolerance / %\n\nEnter a non-negative amount with at most 6 decimal places.\n\nYou receive / NVDAc\n\nNot quoted\n\nNo spot estimate substituted.\n\nMinimum received\n--\n\nAerodrome Slipstream exact-input simulation\n\nNetwork gas is extra, paid in ETH. Builder attribution is not configured; no attribution is claimed. Execution is disabled on this host.\n\nBUY\nGUARD: OK\n1. Approve exact USDC\n2. Swap to NVDAc\n\nYou review and sign each step. No unlimited approval. Every signing boundary rechecks all gates, including after approval.\n\nSAFETY INTERLOCK\nCountry unknown: no trusted host geo source is configured. Trading is unavailable on this host.\nBuilder attribution is unconfigured. Production execution is locked.\nConnect a wallet to read balances and request a quote.\n\nGeo is a coarse risk signal, not KYC or proof of eligibility. No self-certified country bypass.\n\nOrder changed. Request a new quote; previous approvals are not revoked.\n\nBase block 51090152 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\n1.0000\n\nEquivalent NVIDIA shares\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\nYour holdings / Base\n\nConnect a wallet to inspect your actual holdings.\n\nLens / how shares work\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$224.69\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/9/2026, 8:50:17 PM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$224.33\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nNear or below reference\n\n-0.16%\n\n-$0.36 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGuard / thresholds & methodology\n\nVerify addresses, not tickers. Public Base RPC data. Wallet connection does not grant spending permission. Trading is unavailable without trusted geo provenance."
+  },
+  {
+    "width": 320,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "geometry": {
+      "stock": {
+        "x": 13,
+        "y": 225,
+        "right": 307,
+        "bottom": 775.75
+      },
+      "station": {
+        "x": 13,
+        "y": 1264,
+        "right": 307,
+        "bottom": 2620.34375
+      },
+      "cards": {
+        "x": 13,
+        "y": 2684.34375,
+        "right": 307,
+        "bottom": 3903.203125
+      },
+      "targets": [
+        {
+          "text": "Connect wallet",
+          "height": 44
+        },
+        {
+          "text": "NNVDAcNVIDIA>",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify NVDAc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb20000000000000000000078ee7ce2fE4908108C",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x04689a41629776563E6822F76f2e57D148d28513",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0x853F5f1B92b16714Fe6CDA67CAad0856B83C7ab9",
+          "height": 80.78125
+        },
+        {
+          "text": "AAAPLcApple02",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify AAPLc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb200000000000000000000C2e324d24d7eEcd1fb",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x787f13dEa48Db0897CbCDD985de77809D837F988",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0xA3b1E3f9747065e2073722Ff4c9027d3eA4994F0",
+          "height": 80.78125
+        },
+        {
+          "text": "MMETAcMeta03",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify METAc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb2000000000000000000008bC8786B856E61707C",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x6526aE6797A76123638b863AeE4dD27Ba4E4b27D",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0xEAF57753BC382E0324a1D43F72E7027705a2273E",
+          "height": 80.78125
+        },
+        {
+          "text": "GGOOGLcAlphabet04",
+          "height": 55.6875
+        },
+        {
+          "text": "Verify GOOGLc",
+          "height": 44
+        },
+        {
+          "text": "Token / 0xb2000000000000000000002D0BA3164cc74f58B7",
+          "height": 80.78125
+        },
+        {
+          "text": "Chainlink / 0x5bF49E0ffA937CE2FfF033c739aD7C634c4D34F2",
+          "height": 80.78125
+        },
+        {
+          "text": "Aerodrome pool / 0xB1987CAD1682841b4b641d50E520777eC5Ab5542",
+          "height": 80.78125
+        },
+        {
+          "text": "BUY",
+          "height": 44
+        },
+        {
+          "text": "SELL",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "BUYGUARD: OK",
+          "height": 46
+        },
+        {
+          "text": "1. Approve exact USDC",
+          "height": 44
+        },
+        {
+          "text": "2. Swap to NVDAc",
+          "height": 44
+        },
+        {
+          "text": "Refresh data",
+          "height": 46
+        },
+        {
+          "text": "",
+          "height": 44
+        },
+        {
+          "text": "Lens / how shares work",
+          "height": 44
+        },
+        {
+          "text": "Chainlink feed",
+          "height": 44
+        },
+        {
+          "text": "Registry pause",
+          "height": 44
+        },
+        {
+          "text": "Aerodrome Slipstream / USDC pool",
+          "height": 44
+        },
+        {
+          "text": "Guard / thresholds & methodology",
+          "height": 44
+        }
+      ]
+    },
+    "controls": [
+      {
+        "text": "Connect wallet",
+        "disabled": false
+      },
+      {
+        "text": "N\nNVDAc\nNVIDIA\n>",
+        "disabled": false
+      },
+      {
+        "text": "A\nAAPLc\nApple\n02",
+        "disabled": false
+      },
+      {
+        "text": "M\nMETAc\nMeta\n03",
+        "disabled": false
+      },
+      {
+        "text": "G\nGOOGLc\nAlphabet\n04",
+        "disabled": false
+      },
+      {
+        "text": "BUY\nGUARD: OK",
+        "disabled": true
+      },
+      {
+        "text": "1. Approve exact USDC",
+        "disabled": true
+      },
+      {
+        "text": "2. Swap to NVDAc",
+        "disabled": true
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      }
+    ],
+    "text": "SHARELENS / EQUITY SHOP CONSOLE\n_   [ B20 ]\n\nA CLEARER VIEW BEFORE YOU BUY\n\nShareLens.\n\nUnderstand your shares. Check the premium.\n\nEQUITY COUNTER\n04 INSTRUMENTS / BASE\nNON-US ONLYThese assets are available only to eligible non-US users. This app does not verify eligibility. Not investment advice. Not endorsed by Base or Coinbase.\nPLAYER / GUEST\nUSDC / --\nINVENTORY / NVDAc\nBASE / 8453\nConnect wallet\nDisconnect clears this session, not wallet permissions.\nSTOCK LIST\nLOT / INSTRUMENT\nSELECT\nN\nNVDAc\nNVIDIA\n>\nVerify NVDAc\nA\nAAPLc\nApple\n02\nVerify AAPLc\nM\nMETAc\nMeta\n03\nVerify METAc\nG\nGOOGLc\nAlphabet\n04\nVerify GOOGLc\n\nSelect an instrument to inspect, quote or trade. Verify addresses, not tickers.\n\nINSTRUMENT VIEW\nB20 / BASE\nNVDAc\n\nSELECTED INSTRUMENT / TOKENIZED EQUITY\n\nNVIDIA\nPool / token\n$224.33\nReference / TR\n$224.69\nPremium\n-0.16%\nFeed state\nfresh\n\nNear or below reference\n\nLive observations, not an executable quote. Inspect sources and freshness in the HUD below.\n\nMANUAL ONLY\nNO AUTO-SWAP\n\nB20 / NVIDIA\n\nBuy / Sell Station\nNVDAc / BASE 8453 / EXACT INPUT\nEXECUTION LOCKED\nBUY\nSELL\nYou pay / USDC\n\nBase USDC balance: Connect wallet\n\nSlippage tolerance / %\n\nEnter a non-negative amount with at most 6 decimal places.\n\nYou receive / NVDAc\n\nNot quoted\n\nNo spot estimate substituted.\n\nMinimum received\n--\n\nAerodrome Slipstream exact-input simulation\n\nNetwork gas is extra, paid in ETH. Builder attribution is not configured; no attribution is claimed. Execution is disabled on this host.\n\nBUY\nGUARD: OK\n1. Approve exact USDC\n2. Swap to NVDAc\n\nYou review and sign each step. No unlimited approval. Every signing boundary rechecks all gates, including after approval.\n\nSAFETY INTERLOCK\nCountry unknown: no trusted host geo source is configured. Trading is unavailable on this host.\nBuilder attribution is unconfigured. Production execution is locked.\nConnect a wallet to read balances and request a quote.\n\nGeo is a coarse risk signal, not KYC or proof of eligibility. No self-certified country bypass.\n\nOrder changed. Request a new quote; previous approvals are not revoked.\n\nBase block 51090154 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\n1.0000\n\nEquivalent NVIDIA shares\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\nYour holdings / Base\n\nConnect a wallet to inspect your actual holdings.\n\nLens / how shares work\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$224.69\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/9/2026, 8:50:17 PM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$224.33\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nNear or below reference\n\n-0.16%\n\n-$0.36 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGuard / thresholds & methodology\n\nVerify addresses, not tickers. Public Base RPC data. Wallet connection does not grant spending permission. Trading is unavailable without trusted geo provenance."
+  }
+]

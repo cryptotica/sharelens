@@ -1,0 +1,73 @@
+contract_version: 1
+status: verified
+task:
+  objective: Build and verify ShareLens P0 read-only vertical slice for the Base Builder Quest.
+  scope: Four Coinbase B20 stocks; multiplier-to-shares lens; Chainlink total-return reference; Aerodrome USDC premium guard; mobile Loom demo.
+  project: sharelens
+  classification: build_code
+  risk: high
+  requested_actions: []
+  inputs:
+    - control_room/projects/product_experiments/sharelens/BRAIN.md
+    - control_room/projects/product_experiments/sharelens/specs/sharelens-build-spec.md
+    - control_room/projects/product_experiments/sharelens/research/pool-discovery-20260907.md
+    - https://docs.base.org/specifications/b20/tokenized-stocks-on-base
+    - https://x.com/buildonbase/status/2095105184120664122
+  constraints:
+    - P0 read-only and demo-first
+    - no 0x/1inch
+    - no secrets or guessed addresses
+    - preserve exact thresholds and stale rule from source spec
+    - no deploy or publish without human approval
+  approval_required: [production_deploy, public_publish, spend, mainnet_swap]
+  ambiguous: false
+  materially_different_requirements: false
+  knowledge:
+    lookup_status: sufficient
+    action: research
+  evidence_contract: control_room/templates/evidence_contract.yaml
+  shape:
+    required: true
+    objective: Make two answers legible in one screen.
+    audience: Builder Quest reviewers
+    artifact: Next.js App Router app
+    freshness: live data with stale/pause fail-closed handling
+    research_depth: medium
+    standards_refs: [control_room/standards/development/coding.md]
+    constraints: [P0-first, Base 8453, address-bound tokens]
+routing:
+  dispatcher: hermy
+  orchestrator: atlas
+  primary_worker: forge
+  reviewers: [hermy]
+outputs:
+  expected_artifacts:
+    - P0 app source
+    - tests and build output
+    - pool metadata evidence
+    - run record
+  verification_commands: [npm run build, npm test]
+  evidence_paths: [control_room/projects/product_experiments/sharelens/run_records/]
+recovery:
+  retry_limit: 1
+  time_limit_minutes: 90
+  cost_limit: declared_only
+  fallback_worker: hermy
+  blocker: Corrected USDC address and pool metadata must be confirmed before P1.
+result:
+  observed_outputs:
+    - app/page.tsx
+    - app/layout.tsx
+    - app/globals.css
+    - lib/b20.ts
+    - lib/oracle.ts
+    - lib/pool.ts
+    - lib/premium.ts
+    - tests/math.test.ts
+  exit_codes: [0, 0, 0]
+  verification_results:
+    - npm test: pass 4/4
+    - npm run build: pass with Webpack fallback
+    - npm run check:live: pass for all four assets
+  next_action: Human review of the P0 UI; keep P1 wallet/swap deferred.
+  human_review_required: true

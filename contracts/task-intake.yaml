@@ -1,0 +1,59 @@
+request_id: sharelens-builder-quest-20260907
+received_at: 2026-09-07T15:36:34Z
+request: Review ShareLens build spec, research Base requirements, adjust plan, and prepare Builder System workspace.
+project: sharelens
+classification: build_code
+risk: high
+reversibility: recoverable
+ambiguous: false
+materially_different_requirements: false
+context:
+  project_brain_loaded: true
+  applicable_spec: control_room/projects/product_experiments/sharelens/specs/sharelens-build-spec.md
+  latest_run_record: none
+  knowledge_lookup_required: true
+  knowledge_lookup_status: sufficient
+  knowledge_action: research
+shape:
+  required: true
+  objective: Prepare a verified P0-first implementation handoff for a Base Builder Quest demo.
+  audience: Builder Quest reviewers and non-US eligible users
+  artifact: ShareLens web app plus evidence-backed handoff
+  freshness: Live onchain/oracle/pool data; pool discovery must be rechecked at build time
+  research_depth: medium
+  standards_refs:
+    - control_room/standards/development/coding.md
+  constraints:
+    - Base mainnet chain 8453
+    - no secrets
+    - P0 read-only before P1 swap
+    - no 0x or 1inch
+    - human approval before deploy, publish, spend, or mainnet swap
+routing:
+  dispatcher: hermy
+  orchestrator: atlas
+  primary_worker: forge
+  fallback_worker: hermy
+approval:
+  required: true
+  boundary: [production_deploy, public_publish, spend, mainnet_swap]
+  record_template: control_room/templates/approval_record.yaml
+  status: pending
+acceptance_criteria:
+  - four assets selectable by address
+  - live B20 multiplier conversion
+  - Chainlink total-return price and updatedAt/stale state
+  - Aerodrome USDC pool observation
+  - premium colors exactly match thresholds
+  - no multiplier double-counting
+  - contract links and non-US disclaimer
+verification_commands:
+  - npm run build
+  - npm test
+expected_artifacts:
+  - control_room/projects/product_experiments/sharelens
+  - P0 web app source
+  - unit tests for premium and raw-to-scaled conversion
+status: prepared
+blocker: Source spec contains an incorrect USDC address; corrected in project Brain and research record.
+next_action: Build P0 only after Forge confirms the corrected address and rechecks pool metadata.

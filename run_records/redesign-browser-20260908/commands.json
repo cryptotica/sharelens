@@ -1,0 +1,10 @@
+[
+  {
+    "script": "browser-smoke.py",
+    "exit_code": 0
+  },
+  {
+    "script": "browser-wallet-smoke.py",
+    "exit_code": 0
+  }
+]

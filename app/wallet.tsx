@@ -1,0 +1,42 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { createWallet, emptyWallet, type InjectedProvider } from "../lib/wallet";
+
+export function useWallet() {
+  const [state, setState] = useState(emptyWallet);
+  const [controller, setController] = useState<ReturnType<typeof createWallet> | null>(null);
+  const [error, setError] = useState("");
+  useEffect(() => () => controller?.destroy(), [controller]);
+  function connect() {
+    setError("");
+    let wallet = controller;
+    if (!wallet) {
+      const provider = (window as Window & { ethereum?: InjectedProvider }).ethereum;
+      if (!provider?.request || !provider.on || !provider.removeListener) {
+        setError("No injected wallet found. Open this page in an EIP-1193 wallet browser or enable your wallet extension.");
+        return;
+      }
+      wallet = createWallet(provider, setState);
+      setController(wallet);
+    }
+    void wallet.connect();
+  }
+  return { state, controller, connect, error: state.error || error };
+}
+
+export type Wallet = ReturnType<typeof useWallet>;
+
+export function WalletControl({ wallet }: { wallet: Wallet }) {
+  const { state, controller } = wallet;
+  return <div className="wallet-control">
+    <span className="network"><span className="led" aria-hidden="true" /> BASE / 8453</span>
+    {state.account ? <>
+      <span className="wallet-address" title={state.account}>{state.account.slice(0, 6)}...{state.account.slice(-4)}</span>
+      {state.chainId !== 8453 && <button type="button" onClick={() => void controller?.switchBase()}>Switch to Base</button>}
+      <button type="button" onClick={() => controller?.disconnect()}>Disconnect</button>
+    </> : <button className="primary" type="button" disabled={state.busy} onClick={wallet.connect}>{state.busy ? "Wallet pending..." : "Connect wallet"}</button>}
+    {state.busy && <button type="button" onClick={() => controller?.disconnect()}>Cancel connection</button>}
+    <span className="source">Disconnect clears this session, not wallet permissions.</span>
+  </div>;
+}

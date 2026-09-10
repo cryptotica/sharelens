@@ -1,0 +1,68 @@
+[
+  {
+    "width": 1440,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "controls": [
+      {
+        "text": "NVDAc\nNVIDIA",
+        "disabled": false
+      },
+      {
+        "text": "AAPLc\nApple",
+        "disabled": false
+      },
+      {
+        "text": "METAc\nMeta",
+        "disabled": false
+      },
+      {
+        "text": "GOOGLc\nAlphabet",
+        "disabled": false
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      },
+      {
+        "text": "Copy token address",
+        "disabled": false
+      }
+    ],
+    "text": "BASE MAINNET / READ-ONLY\n\nShareLens.\n\nUnderstand your B20 shares. Check the premium.\n\n8453 / BASE\nThese assets are available only to eligible non-US users. This read-only app does not verify eligibility or enable trading. Not investment advice. Not endorsed by Base or Coinbase.\nNVDAc\nNVIDIA\nAAPLc\nApple\nMETAc\nMeta\nGOOGLc\nAlphabet\nBase block 51025284 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\nConverting onchain...\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\n1 B20 token does not always equal 1 share. Cash dividends are reinvested into shares and folded into the multiplier; your token balance does not change and no USDC dividend arrives in your wallet.\n\n0xb20000000000000000000078ee7ce2fE4908108C / Basescan\nCopy token address\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$232.07\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/8/2026, 7:29:35 AM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$232.96\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nSlight premium. Watch slippage.\n\n+0.39%\n\n$0.89 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGreen: < 0.30% | Yellow: 0.30% to 1.00% inclusive | Red: > 1.00%. Status uses exact values before rounding. Negative values mean a discount.\n\nGray when paused or older than 36 hours. Feeds operate 24/5 and may stop during market closures, holidays or corporate actions. Spot prices are not executable quotes and exclude slippage.\n\nVerify addresses, not tickers. Public Base RPC reads only. No wallet connection or transactions.\n\nNVDAc\n0xb20000000000000000000078ee7ce2fE4908108C\nChainlink feed on Basescan\nAAPLc\n0xb200000000000000000000C2e324d24d7eEcd1fb\nChainlink feed on Basescan\nMETAc\n0xb2000000000000000000008bC8786B856E61707C\nChainlink feed on Basescan\nGOOGLc\n0xb2000000000000000000002D0BA3164cc74f58B7\nChainlink feed on Basescan"
+  },
+  {
+    "width": 390,
+    "http": 200,
+    "overflow": false,
+    "page_errors": [],
+    "controls": [
+      {
+        "text": "NVDAc\nNVIDIA",
+        "disabled": false
+      },
+      {
+        "text": "AAPLc\nApple",
+        "disabled": false
+      },
+      {
+        "text": "METAc\nMeta",
+        "disabled": false
+      },
+      {
+        "text": "GOOGLc\nAlphabet",
+        "disabled": false
+      },
+      {
+        "text": "Refresh data",
+        "disabled": false
+      },
+      {
+        "text": "Copy token address",
+        "disabled": false
+      }
+    ],
+    "text": "BASE MAINNET / READ-ONLY\n\nShareLens.\n\nUnderstand your B20 shares. Check the premium.\n\nThese assets are available only to eligible non-US users. This read-only app does not verify eligibility or enable trading. Not investment advice. Not endorsed by Base or Coinbase.\nNVDAc\nNVIDIA\nAAPLc\nApple\nMETAc\nMeta\nGOOGLc\nAlphabet\nBase block 51025285 | refreshes every 60s\nRefresh data\n\n01 / UNDERLYING SHARES\n\nDividend Lens\nAmount of NVDAc tokens\n\nConverting onchain...\n\nB20 toScaledBalance / toRawBalance helpers | 8 decimals\n\nMultiplier\n1x\n\nB20 multiplier() / WAD_PRECISION() | same Base block\n\n1 B20 token does not always equal 1 share. Cash dividends are reinvested into shares and folded into the multiplier; your token balance does not change and no USDC dividend arrives in your wallet.\n\n0xb20000000000000000000078ee7ce2fE4908108C / Basescan\nCopy token address\n\n02 / REFERENCE VS. MARKET\n\nPremium Guard\nChainlink reference\n\n$232.07\n\nChainlink feed | total return | 8 decimals\n\nupdatedAt: 9/8/2026, 7:29:35 AM (local time)\n\nFeed: fresh | Registry pause: not paused\n\nAerodrome pool price\n\n$232.96\n\nAerodrome Slipstream / USDC pool | spot per token\n\nPair verified onchain | fee 0.05% | USDC treated as $1\n\nSlight premium. Watch slippage.\n\n+0.39%\n\n$0.89 per token vs. reference\n\n(Aerodrome - Chainlink) / Chainlink. Total return already includes the multiplier; never applied twice.\n\nGreen: < 0.30% | Yellow: 0.30% to 1.00% inclusive | Red: > 1.00%. Status uses exact values before rounding. Negative values mean a discount.\n\nGray when paused or older than 36 hours. Feeds operate 24/5 and may stop during market closures, holidays or corporate actions. Spot prices are not executable quotes and exclude slippage.\n\nVerify addresses, not tickers. Public Base RPC reads only. No wallet connection or transactions.\n\nNVDAc\n0xb20000000000000000000078ee7ce2fE4908108C\nChainlink feed on Basescan\nAAPLc\n0xb200000000000000000000C2e324d24d7eEcd1fb\nChainlink feed on Basescan\nMETAc\n0xb2000000000000000000008bC8786B856E61707C\nChainlink feed on Basescan\nGOOGLc\n0xb2000000000000000000002D0BA3164cc74f58B7\nChainlink feed on Basescan"
+  }
+]

@@ -1,0 +1,40 @@
+status: verified
+project: sharelens
+workflow: review-and-workspace-preparation
+changed_paths:
+  - control_room/projects/product_experiments/sharelens/
+commands:
+  - date -u '+%Y-%m-%dT%H:%M:%SZ'
+  - DexScreener API token discovery for four B20 addresses
+exit_codes: [0, 0]
+artifacts:
+  - control_room/projects/product_experiments/sharelens/BRAIN.md
+  - control_room/projects/product_experiments/sharelens/README.md
+  - control_room/projects/product_experiments/sharelens/project.yaml
+  - control_room/projects/product_experiments/sharelens/specs/sharelens-build-spec.md
+  - control_room/projects/product_experiments/sharelens/contracts/task-intake.yaml
+  - control_room/projects/product_experiments/sharelens/contracts/handoff.yaml
+  - control_room/projects/product_experiments/sharelens/research/pool-discovery-20260907.md
+acceptance_results:
+  - criterion: source spec reviewed
+    result: pass
+  - criterion: official Base and quest sources checked
+    result: pass
+  - criterion: four Aerodrome USDC candidates observed
+    result: pass
+  - criterion: wrong USDC address identified and quarantined
+    result: pass
+  - criterion: P0/P1 plan risk-ordered
+    result: pass
+  - criterion: implementation built and tested
+    result: not_run
+evidence:
+  - https://docs.base.org/specifications/b20/tokenized-stocks-on-base
+  - https://www.base.org/stocks
+  - https://x.com/buildonbase/status/2095105184120664122
+  - https://api.dexscreener.com/latest/dex/tokens/0xb20000000000000000000078ee7ce2fE4908108C
+  - https://api.dexscreener.com/latest/dex/tokens/0xb200000000000000000000C2e324d24d7eEcd1fb
+  - https://api.dexscreener.com/latest/dex/tokens/0xb2000000000000000000008bC8786B856E61707C
+  - https://api.dexscreener.com/latest/dex/tokens/0xb2000000000000000000002D0BA3164cc74f58B7
+recovery: Preparation only; one YAML formatting error was corrected before creation.
+next_action: Forge builds P0 after pool metadata recheck; Hermy verifies tests and live UI.

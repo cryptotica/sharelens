@@ -1,0 +1,28 @@
+{
+  "name": "sharelens",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "test": "tsx --test tests/*.test.ts",
+    "check:live": "tsx scripts/check-live.ts",
+    "check:execution": "tsx scripts/check-execution.ts",
+    "check:preview": "tsx scripts/check-preview.ts",
+    "check:discovery": "tsx scripts/check-discovery.ts"
+  },
+  "dependencies": {
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "viem": "^2.45.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
